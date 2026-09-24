@@ -1,1 +1,1 @@
-Link: https://sgt401.github.io/leadership/manager-command-center.html
+Link: https://sgt401.github.io/leadership/managercommandcenter.html
