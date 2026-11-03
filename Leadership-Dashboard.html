@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en"><head>
+<meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#0b1727" name="theme-color"/>
+<title>Leadership Dashboard</title>
+<link href="https://api.fontshare.com" rel="preconnect"/><link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,800&amp;display=swap" rel="stylesheet"/>
+<style>
+:root,[data-theme=light]{--bg:#eef3f9;--surface:#fff;--surface2:#f7f9fc;--surface3:#e7eef8;--text:#10243e;--muted:#52677f;--faint:#74879d;--border:#cad6e5;--primary:#1557a6;--primary2:#0d3e7b;--soft:#dce9f8;--pale:#edf4fc;--success:#24774d;--successbg:#e2f2e9;--warning:#9a5a0a;--warningbg:#fff0d5;--danger:#ad3140;--dangerbg:#fae5e8;--shadow:0 14px 38px rgba(16,46,82,.17)}
+[data-theme=dark]{--bg:#0b1727;--surface:#13243a;--surface2:#182c45;--surface3:#203854;--text:#eef5ff;--muted:#b4c3d7;--faint:#8fa2bb;--border:#344b66;--primary:#65a9f3;--primary2:#93c5fd;--soft:#213f62;--pale:#182f4a;--success:#72c99c;--successbg:#1f4737;--warning:#f0bc69;--warningbg:#4b391c;--danger:#f1838e;--dangerbg:#512b34;--shadow:0 14px 38px rgba(0,0,0,.38)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html,body{width:100%;height:100%;overflow:hidden}body{font-family:Satoshi,'Segoe UI',sans-serif;font-size:16px;line-height:1.35;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}button,input,textarea{font:inherit;color:inherit}button{border:0;cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid color-mix(in srgb,var(--primary) 50%,transparent);outline-offset:2px}.app{height:100dvh;display:grid;grid-template-rows:64px 50px minmax(0,1fr) 52px;overflow:hidden}
+.topbar,.tabs,.footer{background:var(--surface);border-color:var(--border)}.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 clamp(16px,2vw,32px);border-bottom:1px solid var(--border)}.brand{display:flex;align-items:center;gap:12px;min-width:0}.logo{width:36px;height:36px;color:var(--primary);flex:none}.brand-title{font-size:18px;font-weight:800;letter-spacing:-.02em}.brand-sub{font-size:12px;color:var(--muted);white-space:nowrap}.actions{display:flex;gap:8px;align-items:center}.btn,.icon-btn{height:38px;border-radius:7px;background:var(--surface2);border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;gap:7px;font-size:13px;font-weight:750;white-space:nowrap}.btn{padding:0 14px}.icon-btn{width:38px}.btn.primary{background:var(--primary);border-color:var(--primary);color:#fff}[data-theme=dark] .btn.primary{color:#081526}.btn svg,.icon-btn svg{width:17px;height:17px}.tabs{display:flex;align-items:stretch;gap:4px;padding:6px clamp(12px,2vw,30px);border-bottom:1px solid var(--border);overflow:hidden}.tab{min-width:0;padding:0 clamp(9px,1.1vw,16px);border-radius:7px;background:transparent;color:var(--muted);font-size:13px;font-weight:750;white-space:nowrap}.tab.active{background:var(--soft);color:var(--primary2)}
+main{min-height:0;position:relative;overflow:hidden}.slide{position:absolute;inset:0;padding:clamp(12px,1.7vh,22px) clamp(16px,2.4vw,38px);display:none;overflow:hidden}.slide.active{display:flex;flex-direction:column;animation:fade .2s ease-out}@keyframes fade{from{opacity:.3;transform:translateY(4px)}to{opacity:1;transform:none}}.slide-head{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:clamp(8px,1.4vh,15px);flex:none}.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.11em;color:var(--primary);font-weight:800;margin-bottom:3px}.slide h1{font-size:clamp(24px,2.3vw,34px);line-height:1.05;letter-spacing:-.035em}.lede{font-size:clamp(12px,1vw,15px);color:var(--muted);max-width:66ch;margin-top:4px}.week-chip{background:var(--soft);color:var(--primary2);font-size:12px;font-weight:800;padding:7px 11px;border-radius:999px;white-space:nowrap}
+.kpi-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(8px,1vw,14px);flex:1;min-height:0}.kpi{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:clamp(12px,1.4vw,19px);display:flex;flex-direction:column;justify-content:space-between;min-width:0}.kpi.hero{grid-column:span 2;grid-row:span 2;background:var(--pale)}.kpi.wide{grid-column:span 2}.kpi-label{display:flex;align-items:center;gap:7px;font-size:clamp(12px,.9vw,15px);font-weight:800;color:var(--muted)}.dot{width:8px;height:8px;border-radius:50%;background:var(--primary)}.kpi-value{font-size:clamp(34px,4.2vw,68px);line-height:.95;font-weight:800;letter-spacing:-.065em;font-variant-numeric:tabular-nums;margin:7px 0}.hero .kpi-value{font-size:clamp(48px,6.8vw,100px);color:var(--primary2)}.kpi-foot{display:flex;align-items:center;justify-content:space-between;gap:6px;color:var(--faint);font-size:12px;font-weight:650}.status{padding:4px 7px;border-radius:999px;background:var(--surface3);color:var(--muted);white-space:nowrap}.status.good{background:var(--successbg);color:var(--success)}.status.warn{background:var(--warningbg);color:var(--warning)}
+.table-shell{flex:1;min-height:0;background:var(--surface);border:1px solid var(--border);border-radius:11px;display:flex;flex-direction:column;overflow:hidden}.table-toolbar{height:44px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 12px;border-bottom:1px solid var(--border);background:var(--surface2)}.table-title{font-size:clamp(15px,1.2vw,19px)}.table-note{font-size:11px;color:var(--muted)}.table-actions{display:flex;gap:6px;align-items:center}.mini-btn{height:29px;padding:0 9px;border-radius:6px;background:var(--surface);border:1px solid var(--border);font-size:11px;font-weight:750}.mini-btn:disabled{opacity:.35;cursor:not-allowed}.metrics-wrap{flex:1;min-height:0;overflow:hidden}.metrics-table{width:100%;height:100%;table-layout:fixed;border-collapse:collapse;font-variant-numeric:tabular-nums}.metrics-table th,.metrics-table td{text-align:center;border-right:1px solid var(--border);border-bottom:1px solid var(--border);padding:2px 3px;line-height:1.05}.metrics-table th:last-child,.metrics-table td:last-child{border-right:0}.metrics-table tbody tr:last-child td{border-bottom:0}.metrics-table thead th{height:34px;background:var(--soft);color:var(--primary2);font-size:clamp(9px,.68vw,11px);font-weight:800}.metrics-table tbody td{font-size:clamp(10px,.78vw,13px);font-weight:700}.metrics-table tbody tr.current{background:var(--pale)}.metrics-table tbody tr:hover{background:color-mix(in srgb,var(--soft) 50%,transparent)}.metrics-table .week-col{width:8.8%;text-align:left;padding-left:7px}.metrics-table .focus{background:color-mix(in srgb,var(--soft) 42%,transparent);color:var(--primary2);font-weight:800}.metrics-table .na{color:var(--faint);font-weight:500}.positive{color:var(--success)}.negative{color:var(--danger)}.edit-week{display:inline-flex;align-items:center;gap:4px;background:transparent;color:var(--primary2);font-weight:800;font-size:inherit;padding:3px 4px;border-radius:5px;white-space:nowrap}.edit-week:hover{background:var(--soft)}.edit-week svg{width:12px;height:12px;flex:none}
+.metric-layout{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(250px,.9fr);gap:clamp(12px,1.5vw,22px);flex:1;min-height:0}.panel{background:var(--surface);border:1px solid var(--border);border-radius:11px;min-height:0}.chart-panel{padding:clamp(14px,1.5vw,22px);display:flex;flex-direction:column}.chart-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}.current-value{font-size:clamp(42px,5vw,76px);font-weight:800;letter-spacing:-.06em;line-height:.95;color:var(--primary2);font-variant-numeric:tabular-nums}.delta{font-size:14px;font-weight:800;margin-top:7px}.delta.good{color:var(--success)}.delta.bad{color:var(--danger)}.delta.neutral{color:var(--muted)}.bar-chart{flex:1;min-height:170px;display:grid;grid-template-columns:repeat(4,1fr);align-items:end;gap:clamp(12px,3vw,50px);padding:28px clamp(8px,2vw,28px) 0;border-bottom:2px solid var(--border);position:relative;margin-top:8px}.target-line{position:absolute;left:0;right:0;border-top:2px dashed var(--warning);z-index:1}.target-line span{position:absolute;right:0;top:-19px;color:var(--warning);font-size:11px;font-weight:800;background:var(--surface);padding-left:5px}.bar-slot{height:100%;display:flex;align-items:flex-end;justify-content:center;position:relative}.bar{width:min(72px,70%);min-height:4px;background:var(--primary);border-radius:6px 6px 0 0;position:relative}.bar.current{background:var(--primary2)}.bar-value{position:absolute;top:-24px;left:50%;transform:translateX(-50%);font-size:clamp(12px,1vw,15px);font-weight:800;white-space:nowrap}.bar-label{position:absolute;bottom:-24px;left:50%;transform:translateX(-50%);font-size:12px;color:var(--muted);font-weight:700;white-space:nowrap}.insight-panel{padding:clamp(14px,1.5vw,22px);display:flex;flex-direction:column;gap:9px}.insight-panel h2{font-size:clamp(17px,1.4vw,22px)}.insight{background:var(--surface2);border-radius:7px;padding:10px}.insight-label{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--primary);font-weight:800;margin-bottom:4px}.insight-text{font-size:clamp(12px,1vw,15px);font-weight:650}.definition{margin-top:auto;font-size:11px;color:var(--muted);padding-top:7px;border-top:1px solid var(--border)}
+.ops-grid,.plan-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.2vw,18px);flex:1;min-height:0}.ops-card,.plan-card{background:var(--surface);border:1px solid var(--border);border-radius:11px;padding:clamp(14px,1.5vw,22px);display:flex;flex-direction:column;min-height:0}.ops-card h2,.plan-card h2{font-size:clamp(17px,1.4vw,22px);margin-bottom:9px}.ops-big{font-size:clamp(42px,5.2vw,82px);font-weight:800;letter-spacing:-.06em;line-height:1;color:var(--primary2);font-variant-numeric:tabular-nums}.ops-meta{margin-top:auto;font-size:13px;color:var(--muted)}.plan-card:first-child{background:var(--pale)}.plan-list{list-style:none;display:flex;flex-direction:column;gap:8px;font-size:clamp(13px,1.05vw,16px);font-weight:650}.plan-list li{display:flex;gap:8px;align-items:flex-start}.plan-list li::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--primary);margin-top:.5em;flex:none}.plan-empty{color:var(--faint);font-style:italic;font-weight:500}
+.footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 clamp(14px,2vw,30px);border-top:1px solid var(--border)}.footer-left{font-size:12px;color:var(--muted)}.progress{display:flex;gap:6px}.progress-dot{width:22px;height:5px;border-radius:99px;background:var(--border)}.progress-dot.active{background:var(--primary)}.nav-buttons{justify-self:end;display:flex;gap:7px}.nav-btn{height:34px;min-width:76px;padding:0 12px;border:1px solid var(--border);background:var(--surface2);border-radius:7px;font-size:12px;font-weight:800}.nav-btn.next{background:var(--primary);color:#fff;border-color:var(--primary)}
+.modal-backdrop{position:fixed;inset:0;z-index:20;background:rgba(3,13,26,.66);display:none;align-items:center;justify-content:center;padding:16px}.modal-backdrop.open{display:flex}.modal{width:min(1040px,96vw);height:min(680px,92vh);background:var(--surface);border:1px solid var(--border);border-radius:15px;box-shadow:var(--shadow);display:grid;grid-template-rows:60px minmax(0,1fr) 58px;overflow:hidden}.modal-head,.modal-foot{display:flex;align-items:center;justify-content:space-between;padding:0 20px}.modal-head{border-bottom:1px solid var(--border)}.modal-head h2{font-size:22px}.modal-foot{border-top:1px solid var(--border);background:var(--surface2)}.modal-body{padding:16px 20px;overflow:auto;scrollbar-width:none}.modal-body::-webkit-scrollbar{display:none}.form-section{margin-bottom:16px}.form-section h3{font-size:13px;color:var(--primary);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}.form-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.field{display:flex;flex-direction:column;gap:4px}.field.wide{grid-column:span 5}.field label{font-size:12px;font-weight:750;color:var(--muted)}.field input,.field textarea{width:100%;border:1px solid var(--border);border-radius:7px;background:var(--surface2);padding:8px 9px;font-size:14px}.field input{height:38px}.field textarea{height:60px;resize:none}.close-btn{width:38px;height:38px;border-radius:7px;background:var(--surface2);font-size:20px}.danger-link{color:var(--danger);background:transparent;font-size:12px;font-weight:750;display:none}.danger-link.visible{display:inline-flex}.toast{position:fixed;left:50%;bottom:66px;transform:translate(-50%,18px);z-index:40;background:var(--primary2);color:#fff;padding:10px 16px;border-radius:7px;font-weight:700;font-size:13px;opacity:0;pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translate(-50%,0)}
+.goals-modal{
+  width:min(720px,96vw);
+  height:min(460px,92vh);
+}
+
+.goals-intro{
+  color:var(--muted);
+  font-size:14px;
+  margin-bottom:16px;
+  max-width:68ch;
+}
+
+.goal-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.goal-card{
+  background:var(--surface2);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:14px;
+}
+
+.goal-card label{
+  display:block;
+  color:var(--text);
+  font-size:14px;
+  font-weight:800;
+  margin-bottom:4px;
+}
+
+.goal-card p{
+  color:var(--muted);
+  font-size:12px;
+  margin-bottom:9px;
+}
+
+.goal-input-wrap{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.goal-input-wrap input{
+  width:100%;
+  height:42px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  background:var(--surface);
+  padding:8px 10px;
+  font-size:16px;
+  font-weight:750;
+  font-variant-numeric:tabular-nums;
+}
+
+.goal-unit{
+  min-width:30px;
+  color:var(--muted);
+  font-size:13px;
+  font-weight:800;
+}
+
+@media(max-width:650px){
+  .goal-grid{
+    grid-template-columns:1fr;
+  }
+
+  .goals-modal{
+    height:min(620px,92vh);
+  }
+}
+@media(max-width:900px){.tab{padding:0 7px;font-size:11px}.hide-small{display:none}.kpi-grid{grid-template-columns:repeat(3,1fr)}.kpi.hero,.kpi.wide{grid-column:span 1;grid-row:span 1}.hero .kpi-value,.kpi-value{font-size:clamp(28px,5vw,48px)}.metric-layout{grid-template-columns:1fr .65fr}.form-grid{grid-template-columns:repeat(3,1fr)}.field.wide{grid-column:span 3}.metrics-table th,.metrics-table td{padding:1px}.metrics-table .week-col{width:9.5%}}
+@media(max-width:650px){.app{grid-template-rows:58px 44px minmax(0,1fr) 48px}.brand-sub,.tabs .tab:nth-child(n+6),.footer-left{display:none}.slide{padding:9px}.slide-head{margin-bottom:7px}.lede{display:none}.kpi-grid{grid-template-columns:repeat(2,1fr);gap:7px}.kpi{padding:9px}.kpi-value{font-size:28px}.metric-layout{grid-template-columns:1fr}.insight-panel{display:none}.ops-grid,.plan-grid{grid-template-columns:1fr 1fr}.ops-card:nth-child(3),.plan-card:nth-child(3){grid-column:span 2}.form-grid{grid-template-columns:repeat(2,1fr)}.field.wide{grid-column:span 2}.metrics-table thead th{font-size:7px}.metrics-table tbody td{font-size:8px}.edit-week svg{display:none}.footer{grid-template-columns:1fr auto}.progress{display:none}}
+@media(max-height:720px){.app{grid-template-rows:58px 44px minmax(0,1fr) 44px}.slide{padding-top:8px;padding-bottom:8px}.slide-head{margin-bottom:7px}.kpi{padding:10px}.kpi-value{font-size:clamp(29px,3.7vw,52px)}.hero .kpi-value{font-size:clamp(40px,5.6vw,78px)}.bar-chart{min-height:145px}.ops-big{font-size:clamp(36px,4.5vw,64px)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+[data-theme=dark]{--bg:#050817;--surface:#101a36;--surface2:#142143;--surface3:#1d3052;--border:rgba(124,166,255,.23);--text:#eef5ff;--muted:#aab9d5;--primary:#44edff;--primary2:#a082ff;--soft:#17354d;--pale:#111f3b;--success:#64efa8;--danger:#ff718e;--warning:#ff718e}body{background:radial-gradient(ellipse at top left,rgba(68,237,255,.12),transparent 45%),radial-gradient(ellipse at bottom right,rgba(160,130,255,.14),transparent 45%),var(--bg)}[data-theme=dark] .kpi,[data-theme=dark] .panel,[data-theme=dark] .table-shell,[data-theme=dark] .ops-card,[data-theme=dark] .plan-card{background:linear-gradient(135deg,rgba(20,31,65,.94),rgba(8,13,33,.90))}.btn.primary,.nav-btn.next{background:linear-gradient(105deg,var(--primary),#6db7ff);color:#03141a!important}.good{color:var(--success)!important}.bad{color:var(--danger)!important}.unknown{color:var(--faint)!important}.tab{padding:0 9px;font-size:12px}.tech-summary{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px}.tech-stat{background:var(--pale);border:1px solid var(--border);border-radius:9px;padding:12px}.tech-stat strong{display:block;font-size:23px}.tech-stat span{font-size:11px;color:var(--muted)}select{font:inherit;font-size:12px;color:var(--text);background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:8px;max-width:180px}.metrics-table{height:auto}.metrics-table td{height:38px}.empty{display:flex;align-items:center;justify-content:center;flex:1;min-height:100px;color:var(--muted);text-align:center;padding:25px}.empty-row{height:100px!important;color:var(--muted)}dialog{width:min(860px,96vw);max-height:94dvh;overflow:auto;background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:22px;box-shadow:var(--shadow)}dialog::backdrop{background:#030d1acc}dialog h2{margin-bottom:16px}#nameDialog{width:min(440px,94vw)}#nameDialog input{width:100%;padding:10px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;margin:8px 0 18px}dialog button{cursor:pointer;color:var(--text);background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:8px 12px}*{scrollbar-width:none}*::-webkit-scrollbar{display:none}@media(max-width:900px){.tech-summary{grid-template-columns:repeat(3,1fr)}.tab{font-size:10px;padding:0 5px}}@media(max-width:650px){.tabs .tab:nth-child(n+6){display:block}.tabs{flex-wrap:wrap}.app{grid-template-rows:58px 76px minmax(0,1fr) 48px}.slide-head .actions{flex-wrap:wrap}.tech-stat{padding:5px}.tech-stat strong{font-size:16px}}
+
+dialog{position:fixed;inset:0;margin:auto;height:fit-content;max-height:calc(100dvh - 32px);width:min(860px,calc(100vw - 32px))}.is-empty{display:flex!important;align-items:center;justify-content:center;min-height:0}.is-empty .empty{width:100%;height:100%;min-height:0;text-align:center}.empty-table{height:100%!important}.empty-table thead{height:38px}.empty-table .empty-row{height:auto!important;vertical-align:middle;text-align:center}.entry-tabs{margin:14px 0;align-items:center;flex-wrap:wrap}#entryForm .form-grid{grid-template-columns:repeat(4,minmax(0,1fr))}#entryForm .field.wide{grid-column:span 4}[hidden]{display:none!important}.goal-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px;flex:none}.goal-strip>div{padding:10px 14px;border:1px solid var(--border);border-radius:9px;background:var(--pale);display:flex;justify-content:space-between;gap:10px;align-items:center}.goal-strip span{font-size:11px;color:var(--muted)}.goal-strip strong{font-size:16px;color:var(--primary)}.storage-status{position:fixed;bottom:54px;left:16px;font-size:10px;color:var(--muted);pointer-events:none;background:var(--bg);padding:2px 6px;border-radius:5px}#weightSelect{max-width:240px;margin-right:8px}.topbar .btn{font-size:11px;padding:0 9px}.topbar .actions{gap:5px}.brand-sub{font-size:10px}.brand-title{font-size:16px}@media(max-width:1000px){.brand-sub{display:none}.topbar .btn{font-size:10px;padding:0 6px}.brand-title{font-size:13px}.goal-strip>div{padding:7px;gap:4px}.goal-strip strong{font-size:12px}}@media(max-width:650px){#entryForm .form-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#entryForm .field.wide{grid-column:span 2}.goal-strip{grid-template-columns:repeat(2,1fr);gap:5px}.goal-strip>div{padding:5px}.brand{display:none}.topbar .actions{width:100%;justify-content:space-between}.topbar .hide-small{display:inline-flex}.storage-status{bottom:48px;font-size:8px}#quarterSlide .slide-head{flex-wrap:wrap}}
+
+/* Larger metric labels, without changing the presentation layout. */
+.kpi-label{font-size:clamp(16px,1.4vw,22px);font-weight:800;color:var(--text);line-height:1.2}.tech-stat span{font-size:clamp(13px,1.05vw,16px);font-weight:750;line-height:1.25;color:var(--text)}.ops-card h2{font-size:clamp(19px,1.7vw,26px);line-height:1.2}.goal-strip span{font-size:clamp(12px,1vw,15px);font-weight:700}.metrics-table thead th{font-size:clamp(10px,.83vw,13px);line-height:1.15}.kpi-foot{font-size:12px}.entry-tabs{justify-content:center}.brand-sub{font-size:10px}.brand-sub:empty{display:none}@media(max-width:900px){.kpi-label{font-size:16px}.tech-stat span{font-size:12px}.metrics-table thead th{font-size:9px}}@media(max-width:650px){.kpi-label{font-size:14px}.tech-stat span{font-size:11px}.metrics-table thead th{font-size:7px}.ops-card h2{font-size:17px}.goal-strip span{font-size:11px}}@media(max-height:650px){.kpi-label{font-size:15px}.ops-card h2{font-size:18px}}
+#leaderboardSlide .slide-head,#leaderboardSlide .actions{flex-wrap:wrap}#leaderboardSlide .metrics-wrap{overflow:auto;scrollbar-width:thin}#leaderboardSlide .metrics-table{min-width:1650px;table-layout:auto}#leaderboardSlide th{position:sticky;top:0;z-index:1;height:48px}#leaderboardSlide td{height:42px;padding:7px}#leaderboardSlide .lb-name{text-align:left;min-width:155px}#leaderboardSlide .lb-sort{background:transparent;color:inherit;font:inherit;font-weight:800;padding:5px;white-space:nowrap}#leaderboardSlide .table-toolbar{height:auto;min-height:44px;padding:8px 12px;gap:10px;flex-wrap:wrap}#leaderboardSlide .lb-method{font-size:11px;color:var(--muted);margin-top:8px;flex:none}
+#quarterGrid:not(.is-empty){grid-template-columns:repeat(6,minmax(0,1fr));grid-template-rows:repeat(3,minmax(160px,1fr));overflow:auto;}
+#quarterGrid .kpi.hero{grid-row:1;grid-column:span 2;}
+#quarterGrid [data-metric="created"]{grid-column:1 / span 2;grid-row:2;}
+#quarterGrid [data-metric="closed"]{grid-column:3 / span 2;grid-row:2;}
+#quarterGrid [data-metric="forecast"]{grid-column:5 / span 2;grid-row:2;background:var(--pale);}
+#quarterGrid [data-metric="backlog"]{grid-column:1 / span 2;grid-row:3;}
+#quarterGrid [data-metric="reopenRate"]{grid-column:3;grid-row:3;}
+#quarterGrid [data-metric="escalationRate"]{grid-column:4;grid-row:3;}
+#quarterGrid [data-metric="missedChats"]{grid-column:5 / span 2;grid-row:3;}
+/* Match the normal KPI padding and number spacing; align the three middle-row values. */
+#quarterGrid [data-metric="created"],#quarterGrid [data-metric="closed"],#quarterGrid [data-metric="forecast"]{display:grid;grid-template-rows:minmax(2.7em,auto) 1fr minmax(2.7em,auto);gap:0;align-items:center;justify-content:normal;padding:clamp(12px,1.4vw,19px);}
+#quarterGrid [data-metric="created"] .kpi-label,#quarterGrid [data-metric="closed"] .kpi-label,#quarterGrid [data-metric="forecast"] .kpi-label{align-self:start;}
+#quarterGrid [data-metric="created"] .kpi-value,#quarterGrid [data-metric="closed"] .kpi-value,#quarterGrid [data-metric="forecast"] .kpi-value{margin:7px 0;align-self:center;}
+#quarterGrid [data-metric="created"] .kpi-foot,#quarterGrid [data-metric="closed"] .kpi-foot,#quarterGrid [data-metric="forecast"] .kpi-foot{align-self:end;}
+#quarterGrid .kpi-foot{flex-wrap:wrap;}
+@media(max-width:650px){
+#quarterGrid:not(.is-empty){grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;grid-auto-rows:minmax(160px,auto);}
+#quarterGrid .kpi[data-metric]{grid-column:auto / span 1;grid-row:auto;}
+#quarterGrid .kpi[data-metric="forecast"]{grid-column:1 / -1;order:10;}
+#quarterGrid .kpi[data-metric="backlog"]{order:1;}
+#quarterGrid .kpi[data-metric="reopenRate"],#quarterGrid .kpi[data-metric="escalationRate"],#quarterGrid .kpi[data-metric="missedChats"]{order:2;}
+}
+
+#tasksView .task-header-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;width:100%}#tasksView .task-summary-card,#tasksView .task-action-card{min-width:0;min-height:88px;width:100%;border-radius:14px;padding:13px 15px}#tasksView .task-summary-card{display:flex;align-items:center;justify-content:flex-start;gap:28px}#tasksView .task-summary-card h2{margin:0;font-size:1.12rem}#tasksView .task-stats{display:flex;gap:13px;align-items:center;flex:0 0 auto}#tasksView .task-stats b{font-size:1.15rem;color:var(--cyan)}#tasksView .task-stats span{font-size:.73rem;color:var(--muted)}#tasksView .task-summary-card .task-stats{align-items:center;text-align:left}#tasksView .task-summary-card .task-stats b{display:inline-block;margin-right:4px}#tasksView .task-action-card{display:flex;align-items:center;justify-content:space-between;gap:12px}#tasksView .task-add-inline{display:flex;align-items:center;gap:8px;min-width:0}#tasksView .task-add-inline input{width:165px}#tasksView .task-add-inline select{width:100px}#tasksView .task-reset-caption{color:var(--muted);font-size:.77rem;text-align:right;white-space:nowrap}#tasksView .task-action-card button{white-space:nowrap}#tasksView .task-action-card.is-adding .task-reset-caption{display:none}#tasksView .task-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:12px;min-height:calc(var(--workspace) - 100px)}#tasksView .task-column{border-radius:14px;padding:13px;min-width:0}#tasksView .column-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}#tasksView .column-head h2{margin:0;font-size:1rem}#tasksView .column-head .count{font-size:.72rem;color:var(--muted)}#tasksView .task-list{display:grid;gap:7px;max-height:540px;overflow-y:auto;padding-right:3px}#tasksView .task-item{display:grid;grid-template-columns:25px 1fr auto;gap:8px;align-items:center;padding:9px 8px;border:1px solid rgba(117,153,217,.15);border-radius:10px;background:rgba(4,10,28,.4);transition:.16s}#tasksView .task-item:hover{border-color:rgba(68,237,255,.38);transform:translateX(2px)}#tasksView .task-item.complete{opacity:.58}#tasksView .check{height:20px;width:20px;padding:0;border-radius:50%;display:grid;place-items:center;background:rgba(12,28,49,.8);border:1px solid rgba(152,187,246,.35);font-size:.72rem}#tasksView .task-item.complete .check{color:#04151b;background:var(--green);border-color:var(--green)}#tasksView .task-name{font-weight:750;font-size:.83rem;line-height:1.28}#tasksView .task-meta{display:flex;align-items:center;gap:6px;color:var(--muted);font-size:.66rem;margin-top:3px}#tasksView .badge{font-size:.61rem;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 5px;border-radius:5px;background:rgba(160,130,255,.14);color:#c7b6ff}#tasksView .badge.daily{background:rgba(68,237,255,.13);color:var(--cyan)}#tasksView .badge.weekly{background:rgba(160,130,255,.14);color:#c7b6ff}#tasksView .badge.monthly{background:rgba(255,202,99,.13);color:var(--amber)}#tasksView .delete-task{padding:4px 6px;color:#ffb0bf;font-size:.7rem;background:transparent;border-color:transparent}#tasksView .progress{height:6px;border-radius:9px;background:rgba(119,153,208,.17);overflow:hidden;margin-top:10px}#tasksView .progress i{display:block;height:100%;background:linear-gradient(90deg,var(--cyan),var(--violet));border-radius:inherit;box-shadow:0 0 10px rgba(68,237,255,.4)}#tasksView label{display:grid;gap:5px;color:var(--muted);font-size:.67rem;text-transform:uppercase;letter-spacing:.08em;font-weight:900}#tasksView input,#tasksView select,#tasksView textarea{width:100%;color:var(--text);font-size:.9rem;background:rgba(4,10,28,.72);border:1px solid rgba(122,158,219,.27);border-radius:8px;padding:9px 10px;outline:none}#tasksView textarea{min-height:88px;resize:vertical}#tasksView input:focus,#tasksView select:focus,#tasksView textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(68,237,255,.11)}
+#tasksView{--cyan:var(--primary);--violet:var(--primary2);--green:var(--success);--amber:var(--warning);overflow:auto;scrollbar-width:thin}#tasksView .glass{background:var(--surface);border:1px solid var(--border)}#tasksView button{border:1px solid var(--border);border-radius:7px;padding:8px 10px;background:var(--surface2);color:var(--text);font-size:12px}#tasksView button.primary{background:var(--primary);color:var(--bg);font-weight:800}#tasksView .hidden{display:none!important}#tasksView .task-columns{min-height:0;flex:1;align-items:start}#tasksView .task-list{max-height:calc(100dvh - 360px);min-height:80px;scrollbar-width:thin}#tasksView .progress{display:block}#tasksView .hint{font-size:13px;color:var(--muted);padding:15px 0}#tasksView .task-name{overflow-wrap:anywhere;font-size:14px}#tasksView .task-item{background:var(--surface2)}#tasksView .task-action-card,#tasksView .task-add-inline{flex-wrap:wrap}#tasksView .check{padding:0}#tasksView .task-summary-card{gap:15px}#tasksView .task-reset-caption{white-space:normal}
+@media(max-width:1000px){#tasksView .task-header-row{grid-template-columns:1fr}#tasksView .task-list{max-height:400px}}@media(max-width:750px){#tasksView .task-columns{grid-template-columns:1fr}#tasksView .task-list{max-height:300px}}
+.metric-slide .metric-layout{grid-template-columns:minmax(0,1fr)}.metric-slide .chart-panel{padding-bottom:40px}.metric-slide .bar-chart{gap:clamp(18px,4vw,70px);padding-left:clamp(12px,4vw,60px);padding-right:clamp(12px,4vw,60px)}.metric-slide .bar{width:min(120px,75%)}
+#leaderboardSlide .metrics-table{width:max-content;min-width:0;max-width:none;table-layout:auto;height:auto}#leaderboardSlide .metrics-table th,#leaderboardSlide .metrics-table td{width:auto;min-width:0;max-width:none;height:auto;padding:7px 6px;white-space:nowrap}#leaderboardSlide .metrics-table .lb-name{min-width:0;width:auto;text-align:left}#leaderboardSlide .lb-sort{padding:3px 0}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="topbar"><div class="brand"><svg aria-label="Leadership Dashboard metrics" class="logo" fill="none" viewbox="0 0 40 40"><rect fill="currentColor" height="36" opacity=".13" rx="9" width="36" x="2" y="2"></rect><path d="M10 28V20h5v8m3 0V13h5v15m3 0V8h5v20" stroke="currentColor" stroke-linecap="round" stroke-width="3"></path></svg><div><div class="brand-title">Leadership Dashboard</div><div class="brand-sub">Support Performance · Weekly &amp; Quarterly Metrics</div></div></div><div class="actions"><button class="btn" id="importData">Import data</button><button class="btn" id="exportData">Export data</button><button class="btn hide-small" id="exportBtn"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 20h14"></path></svg>Save HTML</button><button class="btn hide-small" id="goalsBtn">
+<svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<circle cx="12" cy="12" r="3"></circle>
+<path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06-2.83 2.83-.06-.06A1.7 1.7 0 0 0 15 19.4a1.7 1.7 0 0 0-1 .6 1.7 1.7 0 0 0-.4 1.1V21H9.6v-.09A1.7 1.7 0 0 0 9.2 20a1.7 1.7 0 0 0-1-.6 1.7 1.7 0 0 0-1.88.34l-.06.06-2.83-2.83.06-.06A1.7 1.7 0 0 0 3.8 15a1.7 1.7 0 0 0-.6-1 1.7 1.7 0 0 0-1.1-.4H2V9.6h.09A1.7 1.7 0 0 0 3.2 9.2a1.7 1.7 0 0 0 .6-1 1.7 1.7 0 0 0-.34-1.88l-.06-.06 2.83-2.83.06.06A1.7 1.7 0 0 0 8.2 3.8a1.7 1.7 0 0 0 1-.6 1.7 1.7 0 0 0 .4-1.1V2h4v.09A1.7 1.7 0 0 0 14 3.2a1.7 1.7 0 0 0 1 .6 1.7 1.7 0 0 0 1.88-.34l.06-.06 2.83 2.83-.06.06A1.7 1.7 0 0 0 19.4 8.2a1.7 1.7 0 0 0 .6 1 1.7 1.7 0 0 0 1.1.4h.1v4h-.09A1.7 1.7 0 0 0 20 14a1.7 1.7 0 0 0-.6 1Z"></path>
+</svg>
+  Edit goals
+</button><button aria-label="Switch to light mode" class="icon-btn" id="themeBtn"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path></svg></button><button aria-label="Fullscreen" class="icon-btn" id="fullscreenBtn"><svg fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24"><path d="M8 3H3v5M16 3h5v5M8 21H3v-5m13 5h5v-5"></path></svg></button></div></header>
+<nav class="tabs"><button class="tab active">Snapshot · QTD</button><button class="tab">Weekly Health</button><button class="tab">Weekly Metrics</button><button class="tab">FDR</button><button class="tab">MTTR</button><button class="tab">CSAT</button><button class="tab">Engineers</button><button class="tab">Leaderboard · QTD</button><button class="tab">Task Tracker</button></nav>
+<main><section class="slide active" id="quarterSlide"><div class="slide-head"><div><div class="eyebrow">Quarter to date</div><h1>Quarter snapshot</h1><p class="lede" id="quarterNote"></p></div><select aria-label="Percentage weighting" id="weightSelect"><option value="closed">Rates: closed-ticket weighted</option><option value="mean">Rates: simple average</option></select><select aria-label="Quarter" id="quarterSelect"></select></div><div class="goal-strip" id="quarterGridGoals"></div><div class="kpi-grid" id="quarterGrid"></div></section>
+<section class="slide"><div class="slide-head"><div><div class="eyebrow">Executive snapshot</div><h1>Weekly support health</h1></div><div class="week-chip" data-week-label="">No engineer data</div></div><div class="goal-strip" id="snapshotGridGoals"></div><div class="kpi-grid" id="snapshotGrid"></div></section>
+<section class="slide"><div class="slide-head"><div><div class="eyebrow">Weekly history</div><h1>Metrics table</h1></div><div class="week-chip" id="recordCount">0 weeks</div></div><div class="table-shell"><div class="table-toolbar"><div><h2 class="table-title">Week-over-week performance</h2><div class="table-note">Read-only team rollup · enter and edit metrics on Engineers</div></div><div class="table-actions"><button class="mini-btn" disabled="" id="olderRows">← Older 10</button><span class="table-note" id="pageInfo">0 weeks</span><button class="mini-btn" disabled="" id="newerRows">Newer 10 →</button></div></div><div class="metrics-wrap"><table class="metrics-table"><thead><tr><th class="week-col">Week ending</th><th>Created</th><th>Closed</th><th>Backlog</th><th>SLO</th><th>Reassur.</th><th class="focus">FDR</th><th class="focus">MTTR</th><th>Esc.</th><th>Esc. Rate</th><th>Reopens</th><th>Reopen Rate</th><th>Surveys</th><th>Positive surveys</th><th class="focus">CSAT</th><th>Missed Chats</th></tr></thead><tbody id="metricsRows"></tbody></table></div></div></section>
+<section class="slide metric-slide" data-metric="fdr"></section><section class="slide metric-slide" data-metric="mttr"></section><section class="slide metric-slide" data-metric="csat"></section>
+
+
+<section class="slide" id="techSlide"><div class="slide-head"><div><div class="eyebrow">Single source of weekly metric data</div><h1>Engineer performance</h1><p class="lede">Select a engineer to view QTD results and edit their weekly entries.</p></div><div class="actions"><select aria-label="Engineer" id="techSelect"></select><button class="btn" id="newTech">Add engineer</button><button class="btn primary" id="techAdd">Add engineer week</button></div></div><div class="tech-summary" id="techSummary"></div><div class="table-shell"><div class="table-toolbar"><span class="table-note" id="techNote"></span><div class="table-actions"><button class="mini-btn" id="techOlder">← Older</button><span class="table-note" id="techPage"></span><button class="mini-btn" id="techNewer">Newer →</button></div></div><div class="metrics-wrap"><table class="metrics-table"><thead id="techHead"></thead><tbody id="techRows"></tbody></table></div></div></section><section class="slide" id="leaderboardSlide"><div class="slide-head"><div><div class="eyebrow">Quarter-to-date engineer comparison</div><h1>Engineer leaderboard</h1><p class="lede">Automatically ranked by overall performance · click a metric to change sorting.</p></div><div class="actions"><select id="leaderboardQuarter" aria-label="Leaderboard quarter"></select><select id="leaderboardWeight" aria-label="Leaderboard percentage weighting"><option value="closed">Rates: closed-ticket weighted</option><option value="mean">Rates: simple average</option></select><button class="btn" id="leaderboardOverall">Overall ranking</button></div></div><div class="table-shell"><div class="table-toolbar"><h2 class="table-title" id="leaderboardTitle"></h2><span class="table-note" id="leaderboardNote"></span></div><div class="metrics-wrap"><table class="metrics-table" aria-label="Quarter-to-date engineer leaderboard"><thead id="leaderboardHead"></thead><tbody id="leaderboardRows"></tbody></table></div></div><p class="lb-method">Overall score: equal-weight peer percentiles for FDR, MTTR, CSAT, SLO, reassurance, escalation rate, reopen rate, and missed chats per recorded week. Higher is better for FDR, CSAT, SLO and reassurance; lower is better for the others. Ticket volumes and backlog do not affect the score. All eight measures are required; incomplete engineers appear last. Ties share ranks. Scores are relative to the complete engineers in this quarter, not goal attainment. Counts are quarter totals; backlog is each engineer’s latest week. Existing QTD rate weighting applies.</p></section><section id="tasksView" class="slide"><div class="task-header-row"><section class="task-summary-card glass"><h2>Task Tracker</h2><div class="task-stats"><div><b id="taskProgressNumber">0/0</b><span id="taskProgressLabel">active cadence tasks complete</span></div></div></section><section id="taskActionCard" class="task-action-card glass"><button id="showAddTask" class="primary">+ Add Task</button><div id="taskAddInline" class="task-add-inline hidden"><input id="inlineTaskName" aria-label="New task" placeholder="Enter a task" /><select id="inlineTaskCadence" aria-label="Task cadence"><option value="daily">Daily</option><option value="weekly">Weekly</option><option value="monthly">Monthly</option></select><button id="saveInlineTask" class="primary">Save Task</button><button id="cancelInlineTask" type="button">Cancel</button></div><span id="taskResetCaption" class="task-reset-caption">Weekly tasks reset on Sunday</span></section></div><p id="taskSaveStatus" class="table-note" role="status">Tasks save locally · Save HTML includes tasks</p><section id="taskColumns" class="task-columns"></section></section></main>
+<footer class="footer"><div class="footer-left">Tip: use ← → keys to present</div><div class="progress" id="progress"><span class="progress-dot active"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span><span class="progress-dot"></span></div><div class="nav-buttons"><button class="nav-btn" disabled="" id="prevBtn">← Previous</button><button class="nav-btn next" id="nextBtn">Next →</button></div></footer>
+</div>
+<div aria-labelledby="goalsModalTitle" aria-modal="true" class="modal-backdrop" id="goalsModal" role="dialog">
+<form class="modal goals-modal" id="goalsForm">
+<div class="modal-head">
+<div>
+<div class="eyebrow">Performance thresholds</div>
+<h2 id="goalsModalTitle">Edit metric goals</h2>
+</div>
+<button aria-label="Close goals editor" class="close-btn" id="closeGoalsModal" type="button">
+        ×
+      </button>
+</div>
+<div class="modal-body">
+<p class="goals-intro">
+        These goals control the status badges, table colors, management
+        readouts, and target lines on the metric charts.
+      </p>
+<div class="goal-grid">
+<div class="goal-card">
+<label for="goalFdr">FDR goal</label>
+<p>Minimum acceptable First Day Resolution percentage.</p>
+<div class="goal-input-wrap">
+<input id="goalFdr" max="100" min="0" name="fdr" required="" step="0.1" type="number"/>
+<span class="goal-unit">%</span>
+</div>
+</div>
+<div class="goal-card">
+<label for="goalMttr">MTTR goal</label>
+<p>Maximum acceptable mean resolution time.</p>
+<div class="goal-input-wrap">
+<input id="goalMttr" min="0" name="mttr" required="" step="0.1" type="number"/>
+<span class="goal-unit">days</span>
+</div>
+</div>
+<div class="goal-card">
+<label for="goalCsat">CSAT goal</label>
+<p>Minimum acceptable customer satisfaction percentage.</p>
+<div class="goal-input-wrap">
+<input id="goalCsat" max="100" min="0" name="csat" required="" step="0.1" type="number"/>
+<span class="goal-unit">%</span>
+</div>
+</div>
+<div class="goal-card">
+<label for="goalMissedChats">Missed chats goal</label>
+<p>Maximum acceptable number of missed chats each week.</p>
+<div class="goal-input-wrap">
+<input id="goalMissedChats" min="0" name="missedChats" required="" step="1" type="number"/>
+<span class="goal-unit">chats</span>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-foot">
+<span></span>
+<div class="actions">
+<button class="btn" id="cancelGoalsModal" type="button">
+          Cancel
+        </button>
+<button class="btn primary" type="submit">
+          Save goals
+        </button>
+</div>
+</div>
+</form>
+</div><div aria-live="polite" class="toast" id="toast" role="status">Week updated</div>
+<dialog id="nameDialog"><form id="nameForm"><h2>Add engineer</h2><label>Engineer name<input autocomplete="off" id="techName" maxlength="100" required=""/></label><div class="actions"><button id="nameCancel" type="button">Cancel</button><button class="btn primary">Add engineer</button></div></form></dialog><dialog id="entryDialog"><form id="entryForm"><h2 id="entryTitle"></h2><p class="table-note">Enter reported percentages and MTTR directly. Escalation and reopen rates use closed tickets. CSAT uses positive / total surveys. Optional blanks remain unknown.</p><div class="actions entry-tabs"><span class="table-note" id="ratePreview"></span></div><div class="form-grid" id="entryMetrics"><div class="field"><label>Week ending<input name="week" required="" type="date"/></label></div><div class="field"><label>Created tickets<input min="0" name="created" required="" step="1" type="number"/></label></div><div class="field"><label>Closed tickets<input min="0" name="closed" required="" step="1" type="number"/></label></div><div class="field"><label>Ending backlog<input min="0" name="backlog" required="" step="1" type="number"/></label></div><div class="field"><label>Missed chats<input min="0" name="missedChats" required="" step="1" type="number"/></label></div><div class="field"><label>Escalated tickets<input min="0" name="escalated" required="" step="1" type="number"/></label></div><div class="field"><label>Reopened tickets<input min="0" name="reopened" required="" step="1" type="number"/></label></div><div class="field"><label>Valid surveys<input min="0" name="surveys" required="" step="1" type="number"/></label></div><div class="field"><label>Positive surveys<input min="0" name="positiveSurveys" step="1" type="number"/></label></div><div class="field"><label>Reassurance %<input max="100" min="0" name="reassurance" step="0.01" type="number"/></label></div><div class="field"><label>SLO %<input max="100" min="0" name="slo" step="0.01" type="number"/></label></div><div class="field"><label>MTTR (days)<input min="0" name="mttr" step="0.01" type="number"/></label></div><div class="field"><label>FDR %<input max="100" min="0" name="fdr" step="0.01" type="number"/></label></div></div><div class="actions" style="margin-top:18px"><button class="btn" id="entryDelete" type="button">Delete entry</button><button class="btn" id="entryCancel" type="button">Cancel</button><button class="btn primary">Save weekly metrics</button></div></form></dialog><script id="embeddedData" type="application/json">{"techs": [], "records": [], "targets": {"fdr": 60, "mttr": 4, "csat": 95, "missedChats": 3}, "notes": {}}</script><input accept=".json,application/json" hidden="" id="importFile" type="file"/><div class="storage-status" id="storageStatus" role="status"></div><script>
+function initializeFunDay(){'use strict';
+const $=id=>document.getElementById(id),seed=$('embeddedData');let state=JSON.parse(seed.textContent),current=0,weekPage=0,techPage=0,selectedTech=state.techs[0]?.id||'',editing=null;
+const STORAGE_KEY='funday-technician-metrics-v2';let storageError=false;
+function validData(x){if(!x||!Array.isArray(x.techs)||!Array.isArray(x.records)||!x.targets||!x.notes||typeof x.notes!=='object'||Array.isArray(x.notes))return false;const ids=new Set();for(const t of x.techs){if(!t||typeof t.id!=='string'||typeof t.name!=='string'||!t.name.trim()||ids.has(t.id))return false;ids.add(t.id);}const seen=new Set();for(const r of x.records){if(!r||!ids.has(r.techId)||typeof r.week!=='string'||!/^\d{4}-\d{2}-\d{2}$/.test(r.week)||Number.isNaN(Date.parse(r.week)))return false;const key=r.techId+'|'+r.week;if(seen.has(key))return false;seen.add(key);for(const [k,v] of Object.entries(r)){if(['week','techId'].includes(k))continue;if(v!==null&&(typeof v!=='number'||!Number.isFinite(v)||v<0))return false;}for(const k of ['fdr','slo','reassurance'])if(r[k]!=null&&r[k]>100)return false;for(const k of ['created','closed','backlog','missedChats','escalated','reopened','surveys','positiveSurveys'])if(r[k]!=null&&!Number.isInteger(r[k]))return false;if(r.positiveSurveys!=null&&r.surveys!=null&&r.positiveSurveys>r.surveys)return false;}for(const k of ['fdr','mttr','csat','missedChats'])if(typeof x.targets[k]!=='number'||!Number.isFinite(x.targets[k])||x.targets[k]<0)return false;if(x.targets.fdr>100||x.targets.csat>100)return false;for(const n of Object.values(x.notes)){if(!n||typeof n!=='object'||Object.values(n).some(v=>typeof v!=='string'))return false;}return !x.rollupMode||['closed','mean'].includes(x.rollupMode);}
+try{const saved=localStorage.getItem(STORAGE_KEY);if(saved){const data=JSON.parse(saved);if(validData(data))state=data;else storageError=true;}}catch(e){storageError=true;}
+state.rollupMode=state.rollupMode||'closed';selectedTech=state.techs[0]?.id||'';
+function persist(){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));storageError=false;}catch(e){storageError=true;}$('storageStatus').textContent=storageError?'Local saving unavailable — export data to keep a backup.':'Saved locally · use Export data for a portable backup';}
+
+const date=()=>new Date().toISOString().slice(0,10),quarter=d=>d.slice(0,4)+'-Q'+Math.ceil(Number(d.slice(5,7))/3);let selectedQuarter=quarter(state.records.map(r=>r.week).sort().at(-1)||date());
+const slides=[...document.querySelectorAll('.slide')],tabs=[...document.querySelectorAll('.tab')];
+const metricKeys=['created','closed','backlog','slo','reassurance','fdr','mttr','escalated','escalationRate','reopened','reopenRate','surveys','positiveSurveys','csat','missedChats'],rawKeys=['created','closed','backlog','missedChats','escalated','reopened','surveys','positiveSurveys','fdr','mttr','slo','reassurance'];
+const meta={fdr:{name:'First Day Resolution',higher:true,unit:'%',definition:'First-day resolved / eligible tickets.'},mttr:{name:'Mean Time to Resolution',higher:false,unit:' days',definition:'Total resolution days / closed tickets.'},csat:{name:'Customer Satisfaction',higher:true,unit:'%',definition:'Positive surveys / valid surveys.'},missedChats:{name:'Missed Chats',higher:false,unit:'',definition:'Total missed contacts.'}};
+const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const num=x=>x===null||x===undefined||x===''?null:Number(x),fmt=(x,d=0)=>num(x)===null?'—':Number(x).toFixed(d),percentKeys=['fdr','csat','slo','reassurance','escalationRate','reopenRate'];const value=(k,v)=>fmt(v,percentKeys.includes(k)||k==='mttr'?1:0)+(num(v)!==null&&percentKeys.includes(k)?'%':'');
+const sum=(rows,k)=>!rows.length||rows.some(r=>num(r[k])===null)?null:rows.reduce((a,r)=>a+Number(r[k]),0),ratio=(a,b,m=100)=>a===null||b===null||b<=0?null:a/b*m;
+function reported(r,k){if(num(r[k])!==null)return Number(r[k]);const p={fdr:['fdrResolved','fdrEligible'],mttr:['resolutionDays','closed'],slo:['sloMet','sloEligible'],reassurance:['reassuranceMet','reassuranceEligible']}[k];return ratio(num(r[p[0]]),num(r[p[1]]),k==='mttr'?1:100);}
+function weighted(rows,k){if(!rows.length)return null;if(k!=='mttr'&&state.rollupMode==='mean'){return rows.some(r=>reported(r,k)===null)?null:rows.reduce((a,r)=>a+reported(r,k),0)/rows.length;}if(rows.some(r=>num(r.closed)===null||(r.closed>0&&reported(r,k)===null)))return null;const d=sum(rows,'closed');return d>0?rows.reduce((a,r)=>a+(r.closed>0?reported(r,k)*r.closed:0),0)/d:null;}
+function aggregate(rows,q=false){const w={};rawKeys.forEach(k=>w[k]=sum(rows,k));if(q&&rows.length){const end=rows.map(r=>r.week).sort().at(-1);w.backlog=sum(rows.filter(r=>r.week===end),'backlog');}for(const k of ['fdr','mttr','slo','reassurance'])w[k]=rows.length===1?reported(rows[0],k):weighted(rows,k);w.csat=ratio(w.positiveSurveys,w.surveys);w.escalationRate=ratio(w.escalated,w.closed);w.reopenRate=ratio(w.reopened,w.closed);return w;}
+
+const color=(k,v)=>num(v)===null?'unknown':meta[k]?(meta[k].higher?v>=state.targets[k]:v<=state.targets[k])?'good':'bad':'';
+function teamWeeks(){return [...new Set(state.records.map(r=>r.week))].sort().map(week=>({...aggregate(state.records.filter(r=>r.week===week)),week}));}
+const label=d=>new Date(d+'T12:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+function show(i){current=(i+slides.length)%slides.length;slides.forEach((s,n)=>s.classList.toggle('active',n===current));tabs.forEach((t,n)=>t.classList.toggle('active',n===current));$('prevBtn').disabled=current===0;$('nextBtn').textContent=current===slides.length-1?'Back to start ↺':'Next →';$('progress').innerHTML=slides.map((_,n)=>`<span class="progress-dot ${n===current?'active':''}"></span>`).join('');}
+function cards(id,w){$(id).classList.remove('is-empty');const defs=[['fdr','FDR',state.rollupMode==='mean'?'Reported rate · simple average':'Reported rate · closed-ticket weighted'],['mttr','MTTR','Reported days · closed-ticket weighted'],['csat','CSAT',fmt(w.surveys)+' surveys'],['created','Created','Ticket total'],['closed','Closed','Completed tickets'],['backlog','Backlog','Latest recorded week'],['reopenRate','Reopen rate',fmt(w.reopened)+' reopened'],['escalationRate','Escalation rate',fmt(w.escalated)+' escalated'],['missedChats','Missed chats','Goal reference: '+state.targets.missedChats+' per week']];$(id).innerHTML=defs.map(([k,n,note],i)=>`<article class="kpi ${i<3?'hero':i<6?'wide':''}"><div class="kpi-label">${n}</div><div class="kpi-value ${color(k,w[k])}">${value(k,w[k])}</div><div class="kpi-foot">${note}</div></article>`).join('');}
+
+function renderQuarterCards(w,records){
+ cards('quarterGrid',w);
+ const grid=$('quarterGrid'),nodes=[...grid.children],keys=['fdr','mttr','csat','created','closed','backlog','reopenRate','escalationRate','missedChats'];
+ nodes.forEach((el,i)=>el.dataset.metric=keys[i]);
+ const weeks=[...new Set(records.map(r=>r.week))].sort(),recent=weeks.slice(-4),asOf=weeks.at(-1);
+ const techCount=new Set(records.map(r=>r.techId)).size;
+ const end=Date.UTC(Number(selectedQuarter.slice(0,4)),Number(selectedQuarter.split('-Q')[1])*3,0);
+ const missing=records.some(r=>num(r.closed)===null);
+ const total=records.reduce((a,r)=>a+Number(r.closed),0);
+ const pace=records.filter(r=>recent.includes(r.week)).reduce((a,r)=>a+Number(r.closed),0)/recent.length;
+ const remaining=Math.max(0,(end-Date.parse(asOf+'T00:00:00Z'))/86400000/7);
+ const forecast=missing?null:(total+pace*remaining)/techCount;
+ const card=document.createElement('article');card.className='kpi wide';card.dataset.metric='forecast';
+ card.innerHTML=`<div class="kpi-label">EOQ FC closes per engineer</div><div class="kpi-value">${fmt(forecast)}</div><div class="kpi-foot">Estimate, not commitment</div>`;
+ card.title='Average projected closes per engineer = (team QTD closes + average team weekly closes over the last up to four recorded weeks × weeks remaining after latest entry) ÷ engineers reporting in the selected quarter. Assumes unchanged staffing and closure pace.';
+ grid.insertBefore(card,nodes[5]);
+}
+
+function empty(id,message){$(id).classList.add('is-empty');$(id).innerHTML='<div class="empty">'+esc(message)+'</div>';}
+const tableHead=document.querySelector('#metricsRows').closest('table').querySelector('thead').innerHTML;
+function row(w,editable=false){return `<tr><td class="week-col">${editable?`<button class="edit-week" data-edit="${esc(w.week)}" aria-label="Edit week ${esc(w.week)}">✎ ${esc(label(w.week))}</button>`:esc(label(w.week))}</td>${metricKeys.map(k=>`<td class="${color(k,w[k])}">${value(k,w[k])}</td>`).join('')}</tr>`;}
+function render(){const weeks=teamWeeks(),last=weeks.at(-1);if(last)cards('snapshotGrid',last);else empty('snapshotGrid','No weekly metrics yet. Add engineer weekly entries to begin.');document.querySelectorAll('[data-week-label]').forEach(e=>e.textContent=last?'Week ending '+label(last.week):'No engineer data');weekPage=Math.min(weekPage,Math.max(0,Math.ceil(weeks.length/10)-1));const weekly=weeks.slice().reverse().slice(weekPage*10,weekPage*10+10);$('metricsRows').innerHTML=weekly.map(w=>row(w)).join('')||'<tr><td colspan="16" class="empty-row">No team metrics. Add weekly data on the Engineers page.</td></tr>';$('recordCount').textContent=weeks.length+' weeks';$('pageInfo').textContent=weeks.length?`${weekPage*10+1}–${Math.min(weeks.length,weekPage*10+10)} / ${weeks.length}`:'0 weeks';$('olderRows').disabled=(weekPage+1)*10>=weeks.length;$('newerRows').disabled=weekPage===0;
+const quarters=[...new Set([selectedQuarter,...state.records.map(r=>quarter(r.week))])].sort().reverse();$('quarterSelect').innerHTML=quarters.map(q=>`<option ${q===selectedQuarter?'selected':''}>${q}</option>`).join('');const qr=state.records.filter(r=>quarter(r.week)===selectedQuarter);$('quarterNote').textContent=selectedQuarter+' · '+new Set(qr.map(r=>r.week)).size+' recorded weeks';if(qr.length)renderQuarterCards(aggregate(qr,true),qr);else empty('quarterGrid','No engineer entries for this quarter. Snapshot will populate from saved weekly records.');
+renderTech();renderLeaderboard();renderTrends(weeks);seed.textContent=JSON.stringify(state).replace(/</g,'\u003c');renderGoalStrips();centerTables();persist();}
+function renderTech(){if(!state.techs.some(t=>t.id===selectedTech))selectedTech=state.techs[0]?.id||'';$('techSelect').innerHTML=state.techs.length?state.techs.map(t=>`<option value="${esc(t.id)}" ${t.id===selectedTech?'selected':''}>${esc(t.name)}</option>`).join(''):'<option>No engineers yet</option>';$('techAdd').disabled=!selectedTech;const records=state.records.filter(r=>r.techId===selectedTech&&quarter(r.week)===selectedQuarter).sort((a,b)=>b.week.localeCompare(a.week)),q=aggregate(records,true);$('techSummary').innerHTML=records.length?[['escalationRate','Escalations (%)'],['closed','Closed'],['backlog','Latest backlog'],['fdr','FDR'],['mttr','MTTR'],['csat','CSAT']].map(([k,n])=>`<div class="tech-stat"><span>${n} · QTD</span><strong class="${color(k,q[k])}">${value(k,q[k])}</strong></div>`).join(''):'';$('techHead').innerHTML=tableHead;techPage=Math.min(techPage,Math.max(0,Math.ceil(records.length/8)-1));$('techRows').innerHTML=records.slice(techPage*8,techPage*8+8).map(r=>row({...aggregate([r]),week:r.week},true)).join('')||'<tr><td colspan="16" class="empty-row">'+(selectedTech?'No weekly entries. Select Add engineer week.':'Select Add engineer to create your first engineer.')+'</td></tr>';$('techNote').textContent=selectedQuarter+' · '+(state.techs.find(t=>t.id===selectedTech)?.name||'No engineers');$('techPage').textContent=records.length+' entries';$('techOlder').disabled=(techPage+1)*8>=records.length;$('techNewer').disabled=techPage===0;}
+function renderTrends(weeks){document.querySelectorAll('.metric-slide').forEach(sec=>{const k=sec.dataset.metric,m=meta[k],last=weeks.at(-1);if(!last){sec.innerHTML=`<div class="slide-head"><h1>${m.name}</h1></div><div class="empty">No engineer weekly data yet.</div>`;return;}const recent=weeks.slice(-4),v=last[k],max=Math.max(state.targets[k]*1.3,...recent.map(w=>w[k]||0),1),prior=recent.at(-2)?.[k],delta=num(v)!==null&&num(prior)!==null?v-prior:null;sec.innerHTML=`<div class="slide-head"><div><div class="eyebrow">Four-week trend</div><h1>${m.name}</h1></div><div class="week-chip">${label(last.week)}</div></div><div class="metric-layout"><article class="panel chart-panel"><div class="current-value ${color(k,v)}">${value(k,v)}</div><div class="delta">${delta===null?'More data needed for week-over-week comparison':(delta>0?'+':'')+fmt(delta,1)+' vs prior week'}</div><div class="bar-chart"><div class="target-line" style="bottom:${state.targets[k]/max*100}%"><span>Goal ${state.targets[k]}${m.unit}</span></div>${recent.map(w=>`<div class="bar-slot"><div class="bar" style="height:${Math.max(2,(w[k]||0)/max*100)}%;background:${color(k,w[k])==='good'?'var(--success)':color(k,w[k])==='bad'?'var(--danger)':'var(--border)'}"><span class="bar-value ${color(k,w[k])}">${value(k,w[k])}</span></div><span class="bar-label">${label(w.week)}</span></div>`).join('')}</div></article></div>`;});}
+function openEntry(week=null){if(!selectedTech){$('nameDialog').showModal();return;}editing=week;const f=$('entryForm');f.reset();const r=state.records.find(r=>r.techId===selectedTech&&r.week===week);f.elements.week.value=week||date();rawKeys.forEach(k=>f.elements[k].value=(['fdr','mttr','slo','reassurance'].includes(k)&&r?reported(r,k):r?.[k])??'');$('entryMetrics').hidden=false;updatePreview();$('entryTitle').textContent=(r?'Edit':'Add')+' weekly metrics · '+state.techs.find(t=>t.id===selectedTech).name;$('entryDelete').hidden=!r;$('entryDialog').showModal();}
+$('newTech').onclick=()=>{$('nameForm').reset();$('nameDialog').showModal();$('techName').focus();};$('nameCancel').onclick=()=>$('nameDialog').close();$('nameForm').onsubmit=e=>{e.preventDefault();const name=$('techName').value.trim();if(!name)return;if(state.techs.some(t=>t.name.toLowerCase()===name.toLowerCase()))return alert('That engineer already exists.');selectedTech='tech-'+Date.now()+'-'+Math.random().toString(36).slice(2,7);state.techs.push({id:selectedTech,name});$('nameDialog').close();render();};$('techAdd').onclick=()=>openEntry();$('entryCancel').onclick=()=>$('entryDialog').close();$('techRows').onclick=e=>{const b=e.target.closest('[data-edit]');if(b)openEntry(b.dataset.edit);};
+$('entryForm').onsubmit=e=>{e.preventDefault();const f=e.target,fd=new FormData(f),r={techId:selectedTech,week:String(fd.get('week'))};rawKeys.forEach(k=>r[k]=num(fd.get(k)));if(rawKeys.some(k=>r[k]!==null&&(!Number.isFinite(r[k])||r[k]<0||(!['fdr','mttr','slo','reassurance'].includes(k)&&!Number.isInteger(r[k])))))return alert('Enter non-negative whole-number counts. Percentages and MTTR may be decimal.');if(['fdr','slo','reassurance'].some(k=>r[k]!==null&&r[k]>100))return alert('Percentages must be between 0 and 100.');if(r.positiveSurveys!==null&&r.positiveSurveys>r.surveys)return alert('Positive surveys cannot exceed total surveys.');const duplicate=state.records.some(x=>x.techId===selectedTech&&x.week===r.week&&x.week!==editing);if(duplicate&&!confirm('Replace this engineer’s existing weekly entry?'))return;state.records=state.records.filter(x=>!(x.techId===selectedTech&&(x.week===r.week||x.week===editing)));state.records.push(r);selectedQuarter=quarter(r.week);$('entryDialog').close();render();};$('entryDelete').onclick=()=>{if(editing&&confirm('Delete this engineer entry and recalculate all views?')){state.records=state.records.filter(r=>!(r.techId===selectedTech&&r.week===editing));$('entryDialog').close();render();}};
+$('techSelect').onchange=e=>{selectedTech=e.target.value;techPage=0;renderTech();};$('quarterSelect').onchange=e=>{selectedQuarter=e.target.value;techPage=0;render();};$('techOlder').onclick=()=>{techPage++;renderTech();};$('techNewer').onclick=()=>{techPage--;renderTech();};$('olderRows').onclick=()=>{weekPage++;render();};$('newerRows').onclick=()=>{weekPage--;render();};tabs.forEach((t,i)=>t.onclick=()=>show(i));$('prevBtn').onclick=()=>show(current-1);$('nextBtn').onclick=()=>show(current+1);
+$('goalsBtn').onclick=()=>{Object.keys(meta).forEach(k=>$('goalsForm').elements[k].value=state.targets[k]);$('goalsModal').classList.add('open');$('goalsForm').elements.fdr.focus();};function closeGoals(){$('goalsModal').classList.remove('open');$('goalsBtn').focus();}$('closeGoalsModal').onclick=closeGoals;$('cancelGoalsModal').onclick=closeGoals;$('goalsModal').onclick=e=>{if(e.target===$('goalsModal'))closeGoals();};$('goalsForm').onsubmit=e=>{e.preventDefault();const fd=new FormData(e.target),targets=Object.fromEntries(Object.keys(meta).map(k=>[k,Number(fd.get(k))]));if(Object.values(targets).some(v=>!Number.isFinite(v)||v<0)||targets.fdr>100||targets.csat>100||!Number.isInteger(targets.missedChats)){alert('Use non-negative goals, percentages from 0 to 100, and a whole-number missed-chat goal.');return;}state.targets=targets;closeGoals();render();};$('themeBtn').onclick=()=>{document.documentElement.dataset.theme=document.documentElement.dataset.theme==='dark'?'light':'dark';};$('fullscreenBtn').onclick=async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else await document.documentElement.requestFullscreen();}catch(e){alert('Full-screen mode is unavailable in this browser.');}};
+$('exportBtn').onclick=()=>{seed.textContent=JSON.stringify(state).replace(/</g,'\u003c');const c=document.documentElement.cloneNode(true);c.querySelectorAll('dialog').forEach(d=>d.removeAttribute('open'));c.querySelectorAll('.modal-backdrop').forEach(d=>d.classList.remove('open'));const url=URL.createObjectURL(new Blob(['<!doctype html>\n'+c.outerHTML],{type:'text/html;charset=utf-8'})),a=document.createElement('a');a.href=url;a.download='Leadership-Dashboard.html';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);};document.addEventListener('keydown',e=>{if($('goalsModal').classList.contains('open')){if(e.key==='Escape')closeGoals();return;}if(document.querySelector('dialog[open]')||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;if(e.key==='ArrowRight')show(current+1);if(e.key==='ArrowLeft')show(current-1);});
+function renderGoalStrips(){const html=Object.keys(meta).map(k=>`<div><span>${k==='missedChats'?'Missed chats':k.toUpperCase()} goal</span><strong>${meta[k].higher?'≥':'≤'} ${state.targets[k]}${meta[k].unit}</strong></div>`).join('');$('snapshotGridGoals').innerHTML=html;$('quarterGridGoals').innerHTML=html;}
+function centerTables(){for(const id of ['metricsRows','techRows'])$(id).closest('table').classList.toggle('empty-table',!!$(id).querySelector('.empty-row'));$('weightSelect').value=state.rollupMode;}
+$('weightSelect').onchange=e=>{state.rollupMode=e.target.value;render();};
+function updatePreview(){const f=$('entryForm');$('ratePreview').textContent='Esc. '+value('escalationRate',ratio(num(f.elements.escalated.value),num(f.elements.closed.value)))+' · Reopen '+value('reopenRate',ratio(num(f.elements.reopened.value),num(f.elements.closed.value)))+' · CSAT '+value('csat',ratio(num(f.elements.positiveSurveys.value),num(f.elements.surveys.value)));}
+$('entryForm').addEventListener('input',updatePreview);
+$('exportData').onclick=()=>{const payload={format:'FunDayMetrics',version:2,exportedAt:new Date().toISOString(),data:state},url=URL.createObjectURL(new Blob([JSON.stringify(payload,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='FunDay-data-'+date()+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);};
+$('importData').onclick=()=>{$('importFile').value='';$('importFile').click();};$('importFile').onchange=async e=>{const file=e.target.files[0];if(!file)return;try{if(file.size>10000000)throw Error('File exceeds 10 MB.');const payload=JSON.parse(await file.text());if(payload.format&&payload.format!=='FunDayMetrics')throw Error('Not a FunDay backup.');if(payload.version&&payload.version!==2)throw Error('Unsupported backup version.');const data=payload.data||payload;if(!validData(data))throw Error('Invalid engineer records, goals, or data structure.');if(!confirm('Replace current data with '+data.techs.length+' engineers and '+data.records.length+' weekly entries? Export a backup first if you want to keep your current data.'))return;state=JSON.parse(JSON.stringify(data));state.rollupMode=state.rollupMode||'closed';selectedTech=state.techs[0]?.id||'';selectedQuarter=quarter(state.records.map(r=>r.week).sort().at(-1)||date());weekPage=0;techPage=0;render();alert('Import complete. Data and goals are saved locally.');}catch(err){alert('Import failed: '+err.message);}};
+
+let leaderboardSort='overall',leaderboardAscending=false;
+const leaderboardLabels=['Created','Closed','Backlog','SLO','Reassurance','FDR','MTTR','Escalations','Esc. rate','Reopens','Reopen rate','Surveys','Positive surveys','CSAT','Missed chats'];
+const leaderboardLower=new Set(['backlog','mttr','escalated','escalationRate','reopened','reopenRate','missedChats']);
+function scoreLeaderboard(rows){
+ const factors=['fdr','mttr','csat','slo','reassurance','escalationRate','reopenRate','missedPerWeek'];
+ const lower=new Set(['mttr','escalationRate','reopenRate','missedPerWeek']);
+ for(const r of rows){r.metrics.missedPerWeek=r.entries&&r.metrics.missedChats!=null?r.metrics.missedChats/r.entries:null;r.overall=null;}
+ const eligible=rows.filter(r=>factors.every(k=>r.metrics[k]!=null&&Number.isFinite(r.metrics[k])));
+ for(const r of eligible){r.overall=Math.round(factors.reduce((total,k)=>{const v=r.metrics[k],others=eligible.filter(x=>x!==r);if(!others.length)return total+50;const points=others.reduce((sum,x)=>sum+(x.metrics[k]===v?0.5:(lower.has(k)?v<x.metrics[k]:v>x.metrics[k])?1:0),0);return total+100*points/others.length;},0)/factors.length*100)/100;}
+ return rows;
+}
+function renderLeaderboard(){
+ $('leaderboardQuarter').innerHTML=$('quarterSelect').innerHTML;$('leaderboardWeight').value=state.rollupMode;
+ const rows=scoreLeaderboard(state.techs.map(t=>{const records=state.records.filter(r=>r.techId===t.id&&quarter(r.week)===selectedQuarter);return {name:t.name,entries:records.length,metrics:aggregate(records,true)};}));
+ const sortedValue=r=>leaderboardSort==='overall'?r.overall:r.metrics[leaderboardSort];
+ rows.sort((a,b)=>{const av=sortedValue(a),bv=sortedValue(b);if(av==null&&bv==null)return a.name.localeCompare(b.name);if(av==null)return 1;if(bv==null)return -1;return (leaderboardAscending?av-bv:bv-av)||a.name.localeCompare(b.name);});
+ const header=(k,n)=>`<th scope="col" aria-sort="${k===leaderboardSort?(leaderboardAscending?'ascending':'descending'):'none'}"><button class="lb-sort" data-lb-sort="${k}">${n}${k===leaderboardSort?(leaderboardAscending?' ↑':' ↓'):''}</button></th>`;
+ $('leaderboardHead').innerHTML='<tr><th scope="col">Rank</th><th scope="col" class="lb-name">Engineer</th>'+header('overall','Overall / 100')+metricKeys.map((k,i)=>header(k,leaderboardLabels[i])).join('')+'</tr>';
+ let previous=null,rank=0;
+ $('leaderboardRows').innerHTML=rows.map((r,i)=>{const v=sortedValue(r);if(v!=null&&(previous===null||v!==previous))rank=i+1;previous=v;return `<tr><td>${v==null?'—':rank}</td><td class="lb-name">${esc(r.name)}</td><td title="${r.overall==null?'All eight performance measures are required':'Equal-weight peer percentile score'}">${r.overall==null?'Incomplete':fmt(r.overall,2)}</td>${metricKeys.map(k=>`<td class="${color(k,r.metrics[k])}">${value(k,r.metrics[k])}</td>`).join('')}</tr>`;}).join('')||'<tr><td colspan="18" class="empty-row">Add engineers and weekly entries on the Engineers page.</td></tr>';
+ $('leaderboardTitle').textContent=selectedQuarter+' · '+rows.length+' engineers';
+ $('leaderboardNote').textContent='Ranked by '+(leaderboardSort==='overall'?'overall score':leaderboardLabels[metricKeys.indexOf(leaderboardSort)])+' · '+(leaderboardAscending?'lowest first':'highest first')+' · '+rows.filter(r=>r.overall!==null).length+' complete';
+}
+$('leaderboardQuarter').onchange=e=>{selectedQuarter=e.target.value;techPage=0;render();};
+$('leaderboardWeight').onchange=e=>{state.rollupMode=e.target.value;render();};
+$('leaderboardOverall').onclick=()=>{leaderboardSort='overall';leaderboardAscending=false;renderLeaderboard();};
+$('leaderboardHead').onclick=e=>{const b=e.target.closest('[data-lb-sort]');if(!b)return;const key=b.dataset.lbSort;if(leaderboardSort===key)leaderboardAscending=!leaderboardAscending;else{leaderboardSort=key;leaderboardAscending=leaderboardLower.has(key);}renderLeaderboard();};
+
+render();const snapshotIndex=slides.findIndex(slide=>slide.id==='quarterSlide');show(snapshotIndex>=0?snapshotIndex:0);
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initializeFunDay,{once:true});}else{initializeFunDay();}
+</script><script id="leadershipTasksData" type="application/json">{"items":[],"completions":{}}</script><script>
+(function(){function initLeadershipTasks(){
+const root=document.getElementById('tasksView'),TASKS_STORE='leadershipDashboard.tasks.v1',seed=document.getElementById('leadershipTasksData');
+const empty=()=>({items:[],completions:{}});
+function valid(x){return x&&Array.isArray(x.items)&&x.items.every(t=>t&&typeof t.id==='string'&&/^[a-zA-Z0-9-]+$/.test(t.id)&&typeof t.name==='string'&&['daily','weekly','monthly'].includes(t.cadence))&&x.completions&&typeof x.completions==='object'&&!Array.isArray(x.completions);}
+let tasks=empty();try{const saved=JSON.parse(localStorage.getItem(TASKS_STORE)||seed.textContent);if(valid(saved))tasks=saved;}catch(e){}
+function saveTasks(){seed.textContent=JSON.stringify(tasks).replace(/</g,'\u003c');try{localStorage.setItem(TASKS_STORE,JSON.stringify(tasks));document.getElementById('taskSaveStatus').textContent='Tasks saved locally · Save HTML includes tasks';}catch(e){document.getElementById('taskSaveStatus').textContent='Local saving unavailable — use Save HTML to keep tasks';}}
+function weekStartName(){return 'Sunday'}
+function localDay(d){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');}
+function periodKey(c,date=new Date()){const d=new Date(date);if(c==='daily')return localDay(d);if(c==='monthly')return localDay(d).slice(0,7);d.setDate(d.getDate()-d.getDay());return localDay(d);}
+function completed(t){return!!tasks.completions[`${t.id}|${periodKey(t.cadence)}`]}
+function setCompleted(t,yes){const k=`${t.id}|${periodKey(t.cadence)}`;yes?tasks.completions[k]=true:delete tasks.completions[k];saveTasks()}
+function cadenceLabel(c){return c[0].toUpperCase()+c.slice(1)}
+function resetText(c){return c==='daily'?'Resets at the start of each new day':c==='weekly'?`Resets every ${weekStartName()}`:'Resets on the first of each month'}
+function esc(v){return String(v||'').replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}
+function renderTasks() {
+  // Capture each cadence column's current internal scroll position
+  // before replacing its task-list HTML.
+  const savedScroll = {};
+  root.querySelectorAll('.task-list[data-cadence]').forEach(list => {
+    savedScroll[list.dataset.cadence] = list.scrollTop;
+  });
+
+  const cols = ['daily', 'weekly', 'monthly'];
+  const count = tasks.items.length;
+  const done = tasks.items.filter(completed).length;
+
+  document.getElementById('taskProgressNumber').textContent = `${done}/${count}`;
+  document.getElementById('taskProgressLabel').textContent =
+    'active cadence tasks complete';
+  document.getElementById('taskResetCaption').textContent =
+    `Weekly tasks reset on ${weekStartName()}`;
+
+  document.getElementById('taskColumns').innerHTML = cols.map(c => {
+    const vs = tasks.items.filter(t => t.cadence === c);
+    const d = vs.filter(completed).length;
+
+    return `
+      <article class="task-column glass">
+        <div class="column-head">
+          <div>
+            <h2>${cadenceLabel(c)} Tasks</h2>
+            <span class="count">${d}/${vs.length} complete</span>
+          </div>
+          <button class="mini" data-complete-cadence="${c}">
+            Complete all
+          </button>
+        </div>
+
+        <div class="task-list" data-cadence="${c}">
+          ${
+            vs.length
+              ? vs.map(t => `
+                <div class="task-item ${completed(t) ? 'complete' : ''}">
+                  <button class="check" data-toggle="${t.id}">
+                    ${completed(t) ? '✓' : ''}
+                  </button>
+
+                  <div>
+                    <div class="task-name">${esc(t.name)}</div>
+                    <div class="task-meta">
+                      <span class="badge ${t.cadence}">${t.cadence}</span>
+                      <span>${resetText(t.cadence)}</span>
+                    </div>
+                  </div>
+
+                  <button class="delete-task" data-delete="${t.id}">
+                    Remove
+                  </button>
+                </div>
+              `).join('')
+              : `<p class="hint">No ${c} tasks.</p>`
+          }
+        </div>
+
+        <div class="progress">
+          <i style="width:${vs.length ? (d / vs.length) * 100 : 0}%"></i>
+        </div>
+      </article>
+    `;
+  }).join('');
+
+  // Restore each list after its DOM has been rebuilt.
+  root.querySelectorAll('.task-list[data-cadence]').forEach(list => {
+    list.scrollTop = savedScroll[list.dataset.cadence] || 0;
+  });
+
+  root.querySelectorAll('[data-toggle]').forEach(button => {
+    button.onclick = () => {
+      const task = tasks.items.find(item => item.id === button.dataset.toggle);
+      setCompleted(task, !completed(task));
+      renderTasks();
+
+    };
+  });
+
+  root.querySelectorAll('[data-delete]').forEach(button => {
+    button.onclick = () => {
+      const task = tasks.items.find(item => item.id === button.dataset.delete);
+
+      if (!confirm(`Remove “${task.name}” permanently?`)) return;
+
+      tasks.items = tasks.items.filter(item => item.id !== task.id);
+
+      Object.keys(tasks.completions)
+        .filter(key => key.startsWith(`${task.id}|`))
+        .forEach(key => delete tasks.completions[key]);
+
+      saveTasks();
+      renderTasks();
+
+    };
+  });
+
+  root.querySelectorAll('[data-complete-cadence]').forEach(button => {
+    button.onclick = () => {
+      tasks.items
+        .filter(task => task.cadence === button.dataset.completeCadence)
+        .forEach(task => setCompleted(task, true));
+
+      renderTasks();
+
+    };
+  });
+}
+function toggleInlineTaskForm(show){const input=document.getElementById('inlineTaskName');document.getElementById('taskAddInline').classList.toggle('hidden',!show);document.getElementById('showAddTask').classList.toggle('hidden',show);document.getElementById('taskActionCard').classList.toggle('is-adding',show);if(show){input.focus()}else{input.value='';document.getElementById('inlineTaskCadence').value='daily'}}
+document.getElementById('inlineTaskName').onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();document.getElementById('saveInlineTask').click()}else if(e.key==='Escape'){toggleInlineTaskForm(false)}};
+document.getElementById('showAddTask').onclick=()=>toggleInlineTaskForm(true);
+document.getElementById('cancelInlineTask').onclick=()=>toggleInlineTaskForm(false);
+document.getElementById('saveInlineTask').onclick=()=>{const input=document.getElementById('inlineTaskName'),name=input.value.trim(),cadence=document.getElementById('inlineTaskCadence').value;if(!name){input.focus();return}tasks.items.push({id:(globalThis.crypto?.randomUUID?.()||'task-'+Date.now()+'-'+Math.random().toString(36).slice(2)),name,cadence});saveTasks();input.value='';toggleInlineTaskForm(false);renderTasks()};
+
+let dayKey=localDay(new Date());setInterval(()=>{const next=localDay(new Date());if(next!==dayKey){dayKey=next;renderTasks();}},30000);document.addEventListener('visibilitychange',()=>{if(!document.hidden)renderTasks();});renderTasks();seed.textContent=JSON.stringify(tasks).replace(/</g,'\u003c');
+}if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',initLeadershipTasks,{once:true});else initLeadershipTasks();})();
+</script></body></html>
